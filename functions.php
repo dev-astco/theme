@@ -82,3 +82,88 @@ if(!function_exists('leovu_theme_setup')){
     }
     add_action('init','leovu_theme_setup');
 }
+
+/*------------------------------------------------------ */
+/*------------------ TEMPLATE FUNCTION ------------------*/
+/*------------------------------------------------------ */
+
+/*---------------------*/
+/*THIET LAP HEADER LOGO*/
+/*---------------------*/
+if(!function_exists('leovu_header'))
+{
+    function leovu_header(){?>
+        
+        <div class="logo"><!--BEGIN LOGO-->
+            <div class="site-name"><!--BEGIN SITE-NAME-->
+                <?php
+                    if(is_home()){
+                        printf('<h1><a href="%1$s" title="%2$s">%3$s</a></h1>',
+                        get_bloginfo('url'),
+                        get_bloginfo('desciption'),
+                        get_bloginfo('sitename'));
+                    }
+                    else{
+                        printf('<p><a href="%1$s" title="%2$s">%3$s</a></p>',
+                        get_bloginfo('url'),
+                        get_bloginfo('desciption'),
+                        get_bloginfo('sitename'));
+                    }
+                ?>
+            </div><!--END SITE-NAME-->
+            <div class="site-description"><?php bloginfo('description');?></div>
+        </div><!--END LOGO-->
+        <?php
+    }
+}
+
+/*--------------*/
+/*THIET LAP MENU*/
+/*--------------*/
+if(!function_exists('leovu_menu'))
+{
+    function leovu_menu($menu){
+        $menu = array(
+            'theme_localion'=>$menu,
+            'cotainer'=>'nav',
+            'container_class'=>$menu
+        );
+        wp_nav_menu($menu);
+        
+    }
+}
+
+/*--------------*/
+/*  PAGINATION  */
+/*--------------*/
+
+if(!function_exists('leovu_pagination')){
+    function leovu_pagination(){
+        if($GLOBALS['wp_query']->max_num_pages < 2){
+            return '';
+        } ?>
+        <nav class="pagination" role="navigation">
+        <?php if(get_next_posts_link()):?>
+            <div class="prev"><?php next_posts_link(__('Older Posts','leovu')) ;?></div>
+        <?php endif; ?>  
+        <?php if(get_previous_posts_link()):?>
+            <div class="next"><?php previous_posts_link(__('Newer Posts','leovu')) ;?></div>
+        <?php endif; ?>   
+        </nav>
+        <?php
+        
+    }
+}
+
+/*------------------*/
+/* POST THUMBNAIL   */
+/*------------------*/
+if(!function_exists('leovu_thumbnail')){
+    function leovu_thumbnail($size){
+        if(!is_single() && has_post_thumbnail() && !post_password_required() || has_post_format('image')):?>
+        <figure class="post-thumbnail"><?php the_post_thumbnail($size);?></figure>
+        <?php endif;
+        
+    }
+}
+    

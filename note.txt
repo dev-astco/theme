@@ -1,2 +1,4 @@
 git clone https://github.com/dev-astco/theme.git
 git add filename.txt
+
+coding for content.php
