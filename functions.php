@@ -167,3 +167,26 @@ if(!function_exists('leovu_thumbnail')){
     }
 }
     
+/*------------------------*/
+/* CONTENT ENTRY HEADER   */
+/*------------------------*/
+if(!function_exists('leovu_entry_header')){
+    function leovu_entry_header(){
+        if(is_single()):?>
+        <h1 class="entry-title">
+            <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
+                <?php the_title(); ?>
+            </a>
+        </h1>
+        <?php else:?>
+        <h2 class="entry-title">
+            <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">   
+                <?php the_title(); ?>
+            </a>
+        </h2>
+        <?php
+        endif;
+        
+    }
+}
+    

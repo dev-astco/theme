@@ -2,6 +2,6 @@
     <div class="entry-thumbnail">
         <?php leovu_thumbnail('thumbnail');?>
     </div>
-    <div class="entry-header"></div>
+    <div class="entry-header"><?php leovu_entry_header();?></div>
     <div class="entry-content"></div>
 </article>
