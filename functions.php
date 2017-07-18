@@ -189,4 +189,57 @@ if(!function_exists('leovu_entry_header')){
         
     }
 }
+
+
+if(!function_exists('leovu_entry_meta')){
+    function leovu_entry_meta(){
+        if(!is_page()){
+            ?>
+            <div class="entry-meta">
+            <?php
+                printf( __('<span class="author">Posted By: %1$s ','leovu'),get_the_author());
+
+                printf( __('<span class="date-publishied">at %1$s ','leovu'),get_the_date());
+
+                printf( __('<span class="category">in %1$s ','leovu'),get_the_category_list('->'));
+
+                if(comments_open()){
+                    echo '<span class="meta-reply">';
+                        comments_popup_link(
+                            __('Leave a comment','leovu'),
+                            __('One comment','leovu'),
+                            __('% comments','leovu'),
+                            __('Read all comments','leovu')
+                        );
+                    echo '</span>';
+                }
+            ?>
+            </div>
+            <?php
+        }
+            
+    }
+}
+
+if(!function_exists('leovu_entry_content')){
+    function leovu_entry_content(){
+        if(!is_single()){
+            the_excerpt();
+        }
+        else{
+            the_content();
+            /*
+            * Code hiển thị phân trang trong post type, use <!--nextpage-->
+            */
+            $link_pages = array(
+                'before' => __('<p>Page:', 'leovu'),
+                'after' => '</p>',
+                'nextpagelink'     => __( 'Next page', 'leovu' ),
+                'previouspagelink' => __( 'Previous page', 'leovu' )
+            );
+            wp_link_pages( $link_pages );
+            
+        }
+    }
+}
     
