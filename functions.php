@@ -221,12 +221,17 @@ if(!function_exists('leovu_entry_meta')){
     }
 }
 
+/*-----------------------*/
+/* PRINT CONTENT OF POST */
+/*-----------------------*/
 if(!function_exists('leovu_entry_content')){
     function leovu_entry_content(){
-        if(!is_single()){
+        //if is not single, print post excerpt
+        if(!is_single() && !is_page()){
             the_excerpt();
         }
         else{
+            //is single page then print content of post
             the_content();
             /*
             * Code hiển thị phân trang trong post type, use <!--nextpage-->
@@ -240,6 +245,29 @@ if(!function_exists('leovu_entry_content')){
             wp_link_pages( $link_pages );
             
         }
+    }
+}
+
+/*--------------------------*/
+/* MODIFY EXCERPT READ MORE */
+/*--------------------------*/
+function leovu_readmore(){
+    return '<a class="readmore" href="'.get_permalink(the_ID()).'">'.__('...[Read more]','leovu').'</a>';
+}
+add_filter('excerpt_more','leovu_readmore');
+
+
+/*----------------------*/
+/* PRINT POST TAG LIST  */
+/*----------------------*/
+if(!function_exists('leovu_entry_tag')){
+    function leovu_entry_tag(){
+        //check post has tag
+        if(has_tag()){
+            // print out list tags of post using get_the_tag_list('before','seperate by','after','post id')
+            printf('<div class="entry-tag">'.__('Tag in %1$s','leovu').'</div>',get_the_tag_list('<div class="entry-tag-list">','--','<div>'));
+            
+        }   
     }
 }
     
