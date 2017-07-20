@@ -9,3 +9,85 @@
 *Languages Folder: /languages
 *Version: 1.0
 */
+
+body {
+    font-size: 100%;
+    font-family: "Helvertica", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+a {
+    color: #f6591c;
+    text-decoration: none;
+}
+a:hover,
+a:visited {
+    color: #ff1f00;
+    text-decoration: underline;
+}
+input,
+input[type="submit"],
+button {
+    border: 1px solid #c8c8c8 !important;
+    padding: 5px 10px;
+}
+h1 {
+    font-size: 2.2em;
+}
+h2 {
+    font-size: 2.0em;
+}
+h3 {
+    font-size: 1.8em;
+}
+h4 {
+    font-size: 1.55em;
+}
+h5 {
+    font-size: 1.32em;
+}
+h6 {
+    font-size: 1.1em;
+}
+table,
+table tr,
+table td {
+    border: 1px solid #e7e7e7;
+    padding: 8px;
+}
+.sidebar {
+    grid-area: sidebar;
+}
+.content {
+    grid-area: content;
+}
+.header {
+    grid-area: header;
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+}
+.logo{
+    grid-column: 1;
+}
+primary-menu{
+    grid-column: 2; 
+}
+.footer {
+    grid-area: footer;
+}
+.container {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "header header header" "content content sidebar" "footer  footer  footer";
+}
+.box {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 50px;
+    font-size: 150%;
+}

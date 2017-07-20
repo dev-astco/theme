@@ -7,7 +7,7 @@
         <?php 
             $attachment= get_children(array('post-parent'=>$post->ID));
             $attachment_number=count($attachment);
-            print(__('This image post contains %1$s','leovu'),$attachment_number);
+            printf(__('This image post contains %1$s','leovu'),$attachment_number);
         ?>
     </div>
     <div class="entry-content">

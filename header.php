@@ -13,9 +13,11 @@
 
 <body <?php body_class();?>>
     
-    <div id="container"><!--BEGIN CONTAINER-->
+    <div class="container"><!--BEGIN CONTAINER-->
+        <div class="header">
         <?php
             leovu_header();
             leovu_menu('primary-menu');
         
         ?>
+        </div>

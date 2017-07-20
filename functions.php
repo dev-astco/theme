@@ -252,7 +252,7 @@ if(!function_exists('leovu_entry_content')){
 /* MODIFY EXCERPT READ MORE */
 /*--------------------------*/
 function leovu_readmore(){
-    return '<a class="readmore" href="'.get_permalink(the_ID()).'">'.__('...[Read more]','leovu').'</a>';
+    return '<a class="readmore" href="'.get_permalink(get_the_ID()).'">'.__('...[Read more]','leovu').'</a>';
 }
 add_filter('excerpt_more','leovu_readmore');
 
@@ -265,9 +265,21 @@ if(!function_exists('leovu_entry_tag')){
         //check post has tag
         if(has_tag()){
             // print out list tags of post using get_the_tag_list('before','seperate by','after','post id')
+          
             printf('<div class="entry-tag">'.__('Tag in %1$s','leovu').'</div>',get_the_tag_list('<div class="entry-tag-list">','--','<div>'));
             
         }   
     }
 }
     
+/*-------------------------*/
+/* CSS and JAVASCRIPT HOOK */
+/*-------------------------*/
+
+function leovu_style(){
+    wp_register_style('main-style',get_template_directory_uri()."/style.css",'all');
+    wp_enqueue_style('main-style');
+        wp_register_style('reset-style',get_template_directory_uri()."/reset.css",'all');
+    wp_enqueue_style('reset-style');
+}
+add_action('wp_enqueue_scripts','leovu_style');
